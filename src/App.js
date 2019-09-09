@@ -12,8 +12,9 @@ import { CartContext } from './contexts/CartContext';
 
 function App() {
 	const [products] = useState(data);
+	// this below is setting state from local storage as a ternery statement.. if there is info in local storage for key of "cart" then populate that as state... if empty set state to (cart = []) empty array.. gets info from the useEffect just below storing stringified array into local storage...
 	const [cart, setCart] = useState(localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []);
-
+	//setting state (setItem) as the key-'cart' and the value of json.stringify array of cart...then used above to set the state upon page reload.
 	useEffect(() => {
 		localStorage.setItem('cart',JSON.stringify(cart));
 	},[cart]);
